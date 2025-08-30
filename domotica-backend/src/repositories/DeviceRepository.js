@@ -1,0 +1,19 @@
+import Device from "../models/Device.js";
+
+export const create = async (data) => {
+  return await Device.create(data);
+};
+
+export const findAll = async () => {
+  return await Device.findAll();
+};
+
+export const findById = async (id) => {
+  return await Device.findByPk(id);
+};
+
+export const findByRoom = async (id_room) => {
+  return await Device.findAll({
+    where: { id_room }
+  });
+};

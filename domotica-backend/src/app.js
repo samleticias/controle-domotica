@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import HouseRoutes from "../src/routes/HouseRoutes.js"
 import RoomRoutes from "../src/routes/RoomRoutes.js"
+import DeviceRoutes from "../src/routes/DeviceRoutes.js"
 
 const app = express();
 
@@ -15,6 +16,9 @@ app.use("/api/houses", HouseRoutes);
 
 // Cômodo
 app.use("/api/rooms", RoomRoutes);
+
+// Dispositivo
+app.use("/api/devices", DeviceRoutes);
 
 app.get("/", (req, res) => {
   res.json({ message: "API Controle Domótica funcionando" });
