@@ -25,3 +25,9 @@ export const remove = async (id) => {
   if (room) await room.destroy();
   return room;
 };
+
+export const findByHouse = async (id_house) => {
+  return await Room.findAll({
+    where: { id_house }
+  });
+};

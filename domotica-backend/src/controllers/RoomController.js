@@ -47,3 +47,12 @@ export const remove = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+export const getByHouse = async (req, res) => {
+  try {
+    const rooms = await RoomService.getRoomsByHouse(req.params.id_house);
+    res.json(rooms);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};

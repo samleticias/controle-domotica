@@ -9,6 +9,7 @@ export const getRoomById = (id) => {
   return RoomRepository.findById(id);
 };
 
+// criar cômodo em uma casa passando o id da casa
 export const createRoom = async (data) => {
   if (!data.name || !data.id_house) {
     throw new Error("Campos de nome e id da casa são obrigatórios");
@@ -28,4 +29,14 @@ export const updateRoom = (id, data) => {
 
 export const deleteRoom = (id) => {
   return RoomRepository.remove(id);
+};
+
+// listar cômodos de uma casa específica
+export const getRoomsByHouse = async (id_house) => {
+  const house = await House.findByPk(id_house);
+  if (!house) {
+    throw new Error("Casa não encontrada");
+  }
+
+  return RoomRepository.findByHouse(id_house);
 };

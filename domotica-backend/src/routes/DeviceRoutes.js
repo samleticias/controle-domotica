@@ -3,6 +3,9 @@ import * as DeviceController from "../controllers/DeviceController.js";
 
 const router = Router();
 
+// listar todos os dispositivos cadastrados
+router.get("/", DeviceController.getAll);
+
 // criar dispositivo
 router.post("/", DeviceController.create);
 
@@ -18,5 +21,8 @@ router.get("/", async (req, res) => {
 
 // listar dispositivos por cômodo
 router.get("/room/:id_room", DeviceController.getByRoom);
+
+// remover dispositivo de um cômodo (excluir dispositivo)
+router.delete("/:id_device", DeviceController.remove);
 
 export default router;

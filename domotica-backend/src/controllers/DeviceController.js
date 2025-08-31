@@ -1,5 +1,14 @@
 import * as DeviceService from "../services/DeviceService.js";
 
+export const getAll = async (req, res) => {
+  try {
+    const devices = await DeviceService.getAllDevices();
+    res.json(devices);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 export const create = async (req, res) => {
   try {
     const newDevice = await DeviceService.createDevice(req.body);
@@ -13,6 +22,15 @@ export const getByRoom = async (req, res) => {
   try {
     const devices = await DeviceService.getDevicesByRoom(req.params.id_room);
     res.json(devices);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+export const remove = async (req, res) => {
+  try {
+    await DeviceService.deleteDevice(req.params.id_device);
+    res.json({ message: "Dispositivo removido com sucesso" });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

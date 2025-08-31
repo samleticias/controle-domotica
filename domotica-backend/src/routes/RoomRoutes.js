@@ -18,4 +18,7 @@ router.put("/:id", RoomController.update);
 // remover cômodo por id
 router.delete("/:id", RoomController.remove);
 
+// listar cômodos de uma casa
+router.get("/house/:id_house", RoomController.getByHouse);
+
 export default router;

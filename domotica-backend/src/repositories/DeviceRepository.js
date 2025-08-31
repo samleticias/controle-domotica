@@ -17,3 +17,10 @@ export const findByRoom = async (id_room) => {
     where: { id_room }
   });
 };
+
+export const remove = async (id_device) => {
+  const device = await Device.findByPk(id_device);
+  if (!device) return null;
+  await device.destroy();
+  return device;
+};
