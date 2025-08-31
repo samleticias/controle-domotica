@@ -27,6 +27,15 @@ export const getByRoom = async (req, res) => {
   }
 };
 
+export const getById = async (req, res) => {
+  try {
+    const device = await DeviceService.getDeviceById(req.params.id_device);
+    res.json(device);
+  } catch (err) {
+    res.status(404).json({ error: err.message });
+  }
+};
+
 export const update = async (req, res) => {
   try {
     const device = await DeviceService.updateDevice(req.params.id_device, req.body);

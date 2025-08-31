@@ -9,6 +9,9 @@ router.get("/", DeviceController.getAll);
 // criar dispositivo
 router.post("/", DeviceController.create);
 
+// buscar dispositivo por id
+router.get("/:id_device", DeviceController.getById);
+
 // listar todos os dispositivos 
 router.get("/", async (req, res) => {
   try {

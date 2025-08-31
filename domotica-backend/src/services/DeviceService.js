@@ -20,6 +20,13 @@ export const createDevice = async (data) => {
   return DeviceRepository.create(data);
 };
 
+// obter dispositivo por id
+export const getDeviceById = async (id_device) => {
+  const device = await DeviceRepository.findById(id_device);
+  if (!device) throw new Error("Dispositivo não encontrado");
+  return device;
+};
+
 // listar dispositivos por cômodo
 export const getDevicesByRoom = async (id_room) => {
   const room = await Room.findByPk(id_room);
