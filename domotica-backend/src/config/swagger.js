@@ -15,7 +15,7 @@ const options = {
       },
     ],
   },
-  apis: ["./src/routes/*.js"], // arquivos onde você vai colocar os comentários
+  apis: ["./src/routes/*.js"], // arquivos para colocar os comentários da documentação swagger
 };
 
 const specs = swaggerJsdoc(options);
