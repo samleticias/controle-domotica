@@ -27,6 +27,15 @@ export const getByRoom = async (req, res) => {
   }
 };
 
+export const update = async (req, res) => {
+  try {
+    const device = await DeviceService.updateDevice(req.params.id_device, req.body);
+    res.json(device);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
 export const remove = async (req, res) => {
   try {
     await DeviceService.deleteDevice(req.params.id_device);

@@ -22,6 +22,9 @@ router.get("/", async (req, res) => {
 // listar dispositivos por cômodo
 router.get("/room/:id_room", DeviceController.getByRoom);
 
+// atualizar dispositivo
+router.put("/:id_device", DeviceController.update);
+
 // remover dispositivo de um cômodo (excluir dispositivo)
 router.delete("/:id_device", DeviceController.remove);
 

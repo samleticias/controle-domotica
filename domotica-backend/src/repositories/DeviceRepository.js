@@ -18,6 +18,14 @@ export const findByRoom = async (id_room) => {
   });
 };
 
+export const update = async (id_device, data) => {
+  const [rowsAffected, [updatedDevice]] = await Device.update(data, {
+    where: { id_device },
+    returning: true,
+  });
+  return updatedDevice; 
+};
+
 export const remove = async (id_device) => {
   const device = await Device.findByPk(id_device);
   if (!device) return null;

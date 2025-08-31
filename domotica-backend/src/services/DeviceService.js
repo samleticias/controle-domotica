@@ -31,6 +31,20 @@ export const getDevicesByRoom = async (id_room) => {
   return await DeviceRepository.findByRoom(id_room);
 };
 
+// editar dispositivo
+export const updateDevice = async (id_device, data) => {
+  // se quiser permitir mudar o cômodo, verifica se o cômodo existe
+  if (data.id_room) {
+    const room = await Room.findByPk(data.id_room);
+    if (!room) throw new Error("Cômodo não encontrado");
+  }
+
+  const device = await DeviceRepository.update(id_device, data);
+  if (!device) throw new Error("Dispositivo não encontrado");
+
+  return device;
+};
+
 // remover dispositivo de um cômodo
 export const deleteDevice = async (id_device) => {
   const device = await DeviceRepository.remove(id_device);
