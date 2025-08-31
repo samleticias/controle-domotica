@@ -53,3 +53,17 @@ export const remove = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
+
+export const toggleState = async (req, res) => {
+  try {
+    const { state } = req.body; // true = ligado, false = desligado
+    if (typeof state !== "boolean") {
+      return res.status(400).json({ error: "O campo 'state' deve ser booleano" });
+    }
+
+    const device = await DeviceService.toggleDeviceState(req.params.id_device, state);
+    res.json(device);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};

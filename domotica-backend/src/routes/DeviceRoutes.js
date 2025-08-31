@@ -31,4 +31,7 @@ router.put("/:id_device", DeviceController.update);
 // remover dispositivo de um cômodo (excluir dispositivo)
 router.delete("/:id_device", DeviceController.remove);
 
+// ligar/desligar dispositivo
+router.put("/:id_device/state", DeviceController.toggleState);
+
 export default router;

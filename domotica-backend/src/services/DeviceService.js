@@ -58,3 +58,14 @@ export const deleteDevice = async (id_device) => {
   if (!device) throw new Error("Dispositivo não encontrado");
   return device;
 };
+
+// alternar estado do dispositivo (ligado/desligado)
+export const toggleDeviceState = async (id_device, state) => {
+  const device = await DeviceRepository.findById(id_device);
+  if (!device) throw new Error("Dispositivo não encontrado");
+
+  device.state = state;
+  await device.save();
+
+  return device;
+};
