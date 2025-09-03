@@ -1,0 +1,45 @@
+<div class="container">
+    <p id="mensagem">Nenhum cômodo cadastrado.</p>
+    <div id="cards" class="cards"></div>
+    <!-- Modal adicionar -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2>Novo Cômodo</h2>
+            <input type="text" id="nome" placeholder="Nome do cômodo">
+            <button onclick="cadastrarComodo()">Salvar</button>
+            <button onclick="document.getElementById('modal').style.display='none'">Cancelar</button>
+        </div>
+    </div>
+    <!-- Modal editar -->
+    <div id="modal-editar" class="modal">
+        <div class="modal-content">
+            <h2>Editar Cômodo</h2>
+            <input type="text" id="edit-nome" placeholder="Novo nome">
+            <button onclick="salvarEdicaoComodo()">Salvar</button>
+            <button onclick="excluirComodo()">Excluir</button>
+            <button onclick="document.getElementById('modal-editar').style.display='none'">Cancelar</button>
+        </div>
+    </div>
+    <!-- Sidebar dispositivos -->
+    <div id="sidebar-dispositivos" class="sidebar">
+        <div class="sidebar-header">
+            <h2>Dispositivos</h2>
+            <button onclick="fecharSidebar()">✖</button>
+        </div>
+        <div id="lista-dispositivos"></div>
+        <button onclick="abrirModalNovoDispositivo()">+ Adicionar</button>
+    </div>
+    <!-- Modal novo dispositivo -->
+    <div id="modal-dispositivo" class="modal">
+        <div class="modal-content">
+            <h2>Novo Dispositivo</h2>
+            <input type="text" id="device-nome" placeholder="Nome do dispositivo">
+            <input type="text" id="device-tipo" placeholder="Tipo (ex: LED, Split)">
+            <button onclick="salvarNovoDispositivo()">Salvar</button>
+            <button onclick="fecharModalNovoDispositivo()">Cancelar</button>
+        </div>
+    </div>
+
+    <script src="../comodo/comodos.js"></script>
+    
+</div>
