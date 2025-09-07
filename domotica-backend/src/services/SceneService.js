@@ -1,5 +1,6 @@
 import Scene from "../models/Scene.js";
 import SceneDevice from "../models/SceneDevice.js";
+import { toggleDeviceState } from "./DeviceService.js";
 
 export const createScene = async (data) => {
   return await Scene.create(data);
@@ -44,16 +45,18 @@ export const executeScene = async (id_scene) => {
   if (!scene) throw new Error(`Cena com id ${id_scene} não existe`);
   if (!scene.is_active) throw new Error(`Cena '${scene.name}' está desativada`);
 
-  const devices = await SceneDevice.findAll({
+  const sceneDevices = await SceneDevice.findAll({
     where: { id_scene },
     order: [["order", "ASC"]]
   });
 
-  for (const device of devices) {
-    console.log(`Executando ação "${device.action}" no dispositivo ${device.id_device}`);
-    if (device.interval && device.interval > 0) {
-      await new Promise(resolve => setTimeout(resolve, device.interval * 1000));
+  for (const { id_device, action, interval } of sceneDevices) {
+    console.log(`Executando ação "${action}" no dispositivo ${id_device}`);
+
+    if (interval && interval > 0) {
+      await new Promise(resolve => setTimeout(resolve, interval * 1000));
     }
+    toggleDeviceState(id_device, action === "turn_on");
   }
 
   return { message: `Cena '${scene.name}' executada com sucesso!` };
