@@ -3,8 +3,10 @@ import * as HouseService from "../services/HouseService.js";
 export const getAll = async (req, res) => {
   try {
     const houses = await HouseService.getAllHouses();
-    res.json(houses);
+    console.log("Casas encontradas:", houses); 
+    res.json(houses || []);
   } catch (err) {
+    console.error("Erro em getAll houses:", err);
     res.status(500).json({ error: err.message });
   }
 };
