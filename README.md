@@ -2,6 +2,8 @@
 ## Visão Geral do Projeto
 Este projeto é uma atividade da disciplina Programação para Internet II no IFPI, com o objetivo de desenvolver uma aplicação web que simula o gerenciamento inteligente de dispositivos em um ambiente residencial, incluindo controle de iluminação, climatização e automação de cenas personalizadas.
 
+Repositório do projeto: [Domótica Front-end](https://github.com/luanafleal/domotica-frontend)
+
 ## Tecnologias Utilizadas
 ### Backend
 - Node.js: Ambiente de execução JavaScript.
